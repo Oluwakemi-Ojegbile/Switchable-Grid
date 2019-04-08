@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Switchable Grid</title>
+    <link rel="stylesheet" href="Grid.css">
+</head>
+<body>
+
+<form id="main-wrapper">
+
+    <div class="list-bar">
+
+        <a class="list-icon" v-bind:class="{ 'active': layout == 'list'}" v-on:click="layout = 'list'"></a>
+        <a class="grid-icon" v-bind:class="{ 'active': layout == 'grid'}" v-on:click="layout = 'grid'"></a>
+    </div>
+
+    <ul v-if="layout == 'grid'" class="grid">
+
+        <li v-for="a in articles">
+            <a v-bind:href="a.url" target="_blank"><img v-bind:src="a.image.large" /></a>
+        </li>
+    </ul>
+
+    <ul v-if="layout == 'list'" class="list">
+
+        <li v-for="a in articles">
+            <a v-bind:href="a.url" target="_blank"><img v-bind:src="a.image.small" /></a>
+            <p>{{a.title}}</p>
+        </li>
+    </ul>
+
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
+<script type="text/javascript" src="Grid.js"></script>
+</body>
+</html>
